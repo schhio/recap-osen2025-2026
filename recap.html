@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RECAP OSEN 2025 - 2026</title>
+    <link
+      href="https://fonts.cdnfonts.com/css/akira-expanded"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* EFEK BLUR BACKGROUND VIA CSS */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Pastikan file 'wallpaper.jpg' milikmu ditaruh satu folder dengan file ini */
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
+          url("Desain tanpa judul (31).png") no-repeat center center fixed;
+        background-size: cover;
+
+        /* Mengatur tingkat keburaman background (ubah angka 10px jika ingin lebih/kurang blur) */
+        -webkit-filter: blur(3px);
+        filter: blur(3px);
+
+        /* Efek transform skala untuk menghilangkan garis putih/bocor di ujung layar akibat blur */
+        transform: scale(1.05);
+        z-index: -1;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 720px;
+        background: rgba(20, 20, 20, 0.85);
+
+        /* Prefix untuk kompatibilitas Safari pada kotak container */
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        z-index: 1;
+      }
+
+      .player-card {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+      }
+
+      .video-title {
+        font-family: "Akira Expanded", "Arial Black", sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        color: #ffffff;
+        text-align: center;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        line-height: 1.4;
+      }
+
+      .video-wrapper {
+        width: 100%;
+        background: #000;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .share-btn-container {
+        text-align: center;
+      }
+
+      .share-btn {
+        background-color: #ffffff;
+        color: #121212;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+        margin-top: 20px;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+      }
+
+      .share-btn:hover {
+        background-color: #e0e0e0;
+        transform: translateY(-2px);
+      }
+
+      .comment-section h3 {
+        margin-bottom: 15px;
+        color: #ffffff;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .comment-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 25px;
+      }
+
+      .comment-input {
+        width: 100%;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        resize: vertical;
+        font-size: 0.95rem;
+        color: #ffffff;
+        transition: border-color 0.2s;
+      }
+
+      .comment-input:focus {
+        outline: none;
+        border-color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .comment-note {
+        font-size: 0.85rem;
+        color: #aaaaaa;
+        margin-top: -4px;
+        font-style: italic;
+      }
+
+      .submit-btn {
+        background-color: #242424;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        align-self: flex-end;
+        transition: all 0.2s;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+
+      .submit-btn:hover {
+        background-color: #ffffff;
+        color: #121212;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="player-card">
+        <h2 class="video-title">RECAP OSEN <br />2025 - 2026</h2>
+        <div class="video-wrapper">
+          <video id="video-player" controls>
+            <source src="0602 (1).mp4" type="video/mp4" />
+            Browser kamu tidak mendukung player video ini.
+          </video>
+        </div>
+
+        <div class="share-btn-container">
+          <button class="share-btn" onclick="copyVideoLink()">
+            🔗 Salin Link Video
+          </button>
+        </div>
+      </div>
+
+      <div class="comment-section">
+        <label for="comment-text"><h3>Kirim Komentar / Feedback</h3></label>
+        <div class="comment-form">
+          <textarea
+            class="comment-input"
+            id="comment-text"
+            rows="4"
+            placeholder="Tulis komentar atau kesan pesanmu di sini..."
+            aria-label="Kolom komentar"
+          ></textarea>
+          <p class="comment-note">*kasih nama anda siapa yang ngirim</p>
+          <button class="submit-btn" onclick="sendToWhatsApp()">
+            Kirim ke WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const videoPlayer = document.getElementById("video-player");
+      const videoSource = videoPlayer.querySelector("source").src;
+
+      function copyVideoLink() {
+        navigator.clipboard
+          .writeText(videoSource)
+          .then(() => {
+            alert("Link video RECAP OSEN berhasil disalin!");
+          })
+          .catch((err) => {
+            alert("Gagal menyalin link: " + err);
+          });
+      }
+
+      function sendToWhatsApp() {
+        const input = document.getElementById("comment-text");
+        const commentValue = input.value.trim();
+
+        if (commentValue === "") {
+          alert("Komentar tidak boleh kosong!");
+          return;
+        }
+
+        // PENTING: Masukkan nomor WhatsApp kamu di sini (Gunakan kode negara 62)
+        const nomorWA = "6281234567890";
+
+        const teksPesan = encodeURIComponent(
+          `*Komentar Baru: RECAP OSEN 2025 - 2026*\n\n"${commentValue}"`,
+        );
+        const urlWhatsApp = `https://wa.me/${nomorWA}?text=${teksPesan}`;
+
+        window.open(urlWhatsApp, "_blank");
+        input.value = "";
+      }
+    </script>
+  </body>
+</html>
